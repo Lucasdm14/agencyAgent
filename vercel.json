@@ -1,0 +1,15 @@
+cd autocm-v2
+
+# Crear el archivo
+cat > vercel.json << 'EOF'
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install"
+}
+EOF
+
+git add vercel.json
+git commit -m "fix: add vercel.json for Next.js framework detection"
+git push
