@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "eslint ."
   },
-  "dependencies": {
+ "dependencies": {
   "openai": "^4.67.0",
+  "ai": "^3.4.0",
+  "@ai-sdk/openai": "^0.0.66",
   "@supabase/ssr": "^0.5.2",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.12",
