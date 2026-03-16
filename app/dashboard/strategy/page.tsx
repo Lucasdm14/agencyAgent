@@ -523,11 +523,6 @@ function Step4Report({ session, onBack, onFinish, loading }: {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 
-// getBrands imported from storage below
-function _unused_getBrands() {
-
-  return gb() as Brand[]
-}
 
 export default function StrategyPage() {
   const [session,  setSession]  = useState<StrategySession | null>(null)
