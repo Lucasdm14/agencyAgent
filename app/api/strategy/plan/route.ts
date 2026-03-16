@@ -33,7 +33,7 @@ const { brand, estratega, num_days, period_label, selected_platforms } = await r
 
   const systemPrompt = resolveAgentPrompt(estratega, brand, {
     num_days:     String(num_days),
-    platforms:    (selected_platforms ?? ['instagram','facebook','linkedin']).join(', '),
+    platform:     (selected_platforms ?? ['instagram','facebook','linkedin']).join(', '),
     period:       period_label,
   })
 
