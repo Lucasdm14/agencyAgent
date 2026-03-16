@@ -19,11 +19,12 @@ export async function POST(req: Request) {
   const session = await getSession()
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
-  const { brand, estratega, num_days, period_label, selected_platforms } = await req.json() as {
-    brand:        Brand
-    estratega:    Agent
-    num_days:     number
-    period_label: string
+const { brand, estratega, num_days, period_label, selected_platforms } = await req.json() as {
+    brand:               Brand
+    estratega:           Agent
+    num_days:            number
+    period_label:        string
+    selected_platforms?: string[]
   }
 
   if (!brand || !estratega || !num_days || !period_label) {
