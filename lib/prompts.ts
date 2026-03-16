@@ -9,6 +9,7 @@ export type TemplateVars = {
   brandbook?:        string
   segment?:          string
   platform?:         string
+  platforms?:        string 
   period?:           string
   num_days?:         string
   day?:              string
