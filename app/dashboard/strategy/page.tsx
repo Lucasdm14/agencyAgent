@@ -382,7 +382,7 @@ function Step2Plan({ session, onApprove, onRegenerate, loading }: {
             {post.visual_direction && <p className="text-2xs text-[#444] mt-1">🎨 {post.visual_direction}</p>}
             {post.script_outline && (
               <div className="mt-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-2">
-                <p className="text-2xs text-[#666] mb-1">📝 Guión outline · {post.script_outline.total_duration_sec ?? post.script_outline.duration_sec}s</p>
+                <p className="text-2xs text-[#666] mb-1">📝 Guión outline · {post.script_outline.total_duration_sec}s</p>
                 {(post.script_outline.scenes ?? []).slice(0, 3).map((sc, si) => (
                   <p key={si} className="text-2xs text-[#444]">Escena {sc.order}: {sc.visual?.slice(0, 60)}</p>
                 ))}
