@@ -271,6 +271,14 @@ export interface InstagramAccountMetrics {
 
 // ─── Competitor Analysis ──────────────────────────────────────────────────────
 
+export interface RSSItem {
+  title: string; summary: string; feed_name: string; published_at: string; url: string
+}
+
+export interface NewsItem {
+  title: string; description: string; source: string; published_at: string; url: string
+}
+
 export interface RealContext {
   news: { title: string; description: string; source: string; published_at: string; url: string }[]
   rss:  { title: string; summary: string; feed_name: string; published_at: string; url: string }[]
