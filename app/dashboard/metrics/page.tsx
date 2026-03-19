@@ -170,7 +170,7 @@ function AIAnalysis({ metrics }: { metrics: InstagramAccountMetrics }) {
         <div className="flex items-center gap-2">
           <Sparkles size={14} className="text-[#5b6ef5]" />
           <span className="text-sm font-semibold text-white">Análisis IA</span>
-          {data.posting_frequency && <span className="text-xs text-[#666]">· {data.posting_frequency as string}</span>}
+          {typeof data.posting_frequency === 'string' && <span className="text-xs text-[#666]">· {data.posting_frequency}</span>}
         </div>
         <button onClick={run} className="btn btn-secondary text-xs"><RefreshCw size={11} /> Regenerar</button>
       </div>
