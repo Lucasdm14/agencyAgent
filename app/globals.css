@@ -47,6 +47,18 @@ html, body {
   border: 1px solid #2a2a2a;
   border-radius: 6px;
   color: #ffffff;
+  color-scheme: dark;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input::placeholder { color: #444444; }
+.input option {
+  background: #1e1e1e;
+  color: #ffffff;
+}
   padding: 8px 12px;
   font-size: 14px;
   width: 100%;
@@ -95,3 +107,15 @@ html, body {
 .toggle input:checked + .toggle-slider { background: #5b6ef5; }
 .toggle-slider:before { content:''; position: absolute; height: 14px; width: 14px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.15s; }
 .toggle input:checked + .toggle-slider:before { transform: translateX(16px); }
+
+input, textarea, select {
+  color-scheme: dark;
+  color: #ffffff;
+}
+input::placeholder, textarea::placeholder {
+  color: #444444;
+}
+select option {
+  background: #1e1e1e;
+  color: #ffffff;
+}
