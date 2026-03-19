@@ -269,23 +269,39 @@ export function regeneratePrompt(originalCopy: string, instruction: string, bran
   return `BRANDBOOK:\n${brandbookJson}\n${agentBlock(agent)}\nCOPY ORIGINAL:\n"""\n${originalCopy}\n"""\nINSTRUCCIÓN: "${instruction}"\n\nReescribí el copy. Respondé SOLO:\n{ "generated_copy": "...", "hashtags": [], "rationale": "..." }`
 }
 
+// ─── Competitor analysis prompts ──────────────────────────────────────────────
+
 export function competitorAnalysisSystem() {
-  return 'Sos un analista de inteligencia competitiva. Analizás EXCLUSIVAMENTE los datos reales que se te proveen. No inventés nada. Respondé SOLO con JSON.'
+  return 'Sos un analista de inteligencia competitiva. Analizás EXCLUSIVAMENTE los datos reales que se te proveen. REGLA ABSOLUTA: no inventés nada. Respondé SOLO con JSON.'
 }
 
 export function competitorAnalysisPrompt(
   competitorName: string,
   brandName: string,
-  realData: { meta_ads: { body_text?: string }[]; youtube_videos: { title: string; view_count: string }[]; news: { title: string }[]; rss: { title: string }[] }
+  realData: {
+    meta_ads:       { body_text?: string }[]
+    youtube_videos: { title: string; view_count: string }[]
+    news:           { title: string }[]
+    rss:            { title: string }[]
+  }
 ) {
-  const adsBlock  = realData.meta_ads.length > 0 ? `AVISOS META (${realData.meta_ads.length}):\n` + realData.meta_ads.map(a => `- "${a.body_text?.slice(0, 150)}"`).join('\n') : 'META: sin avisos.'
-  const ytBlock   = realData.youtube_videos.length > 0 ? `\nYOUTUBE:\n` + realData.youtube_videos.map(v => `- "${v.title}" | ${v.view_count} vistas`).join('\n') : ''
-  const newsBlock = realData.news.length > 0 ? `\nNOTICIAS:\n` + realData.news.map(n => `- "${n.title}"`).join('\n') : ''
-  return `Analizá a "${competitorName}" para "${brandName}".\n${adsBlock}${ytBlock}${newsBlock}\n\nRespondé SOLO con JSON:\n{ "active_ads_count": 0, "main_messages": [], "content_themes": [], "posting_cadence": "...", "differentiation_opportunities": [], "topics_to_avoid": [], "recommended_angles": [], "confidence": "low", "data_sources_used": [], "disclaimer": "..." }`
+  const adsBlock  = realData.meta_ads.length > 0
+    ? `AVISOS META (${realData.meta_ads.length}):\n` + realData.meta_ads.map(a => `- "${a.body_text?.slice(0, 150)}"`).join('\n')
+    : 'META: sin avisos.'
+  const ytBlock   = realData.youtube_videos.length > 0
+    ? `\nYOUTUBE:\n` + realData.youtube_videos.map(v => `- "${v.title}" | ${v.view_count} vistas`).join('\n')
+    : ''
+  const newsBlock = realData.news.length > 0
+    ? `\nNOTICIAS:\n` + realData.news.map(n => `- "${n.title}"`).join('\n')
+    : ''
+
+  return `Analizá a "${competitorName}" para la marca "${brandName}".\n${adsBlock}${ytBlock}${newsBlock}\n\nRespondé SOLO con JSON:\n{ "active_ads_count": 0, "main_messages": [], "content_themes": [], "posting_cadence": "...", "differentiation_opportunities": [], "topics_to_avoid": [], "recommended_angles": [], "confidence": "low", "data_sources_used": [], "disclaimer": "..." }`
 }
 
+// ─── Metrics (CSV) prompts ─────────────────────────────────────────────────────
+
 export function metricsSystem() {
-  return 'Sos un analista de performance de marketing digital. Solo analizás los datos que se te dan. No inventés benchmarks. Respondé SOLO con JSON.'
+  return 'Sos un analista de performance de marketing digital. Solo analizás los datos que se te dan. No inventés benchmarks ni comparaciones externas. Respondé SOLO con JSON.'
 }
 
 export function metricsPrompt(parsedCsvData: string, platform: string, brandName: string) {
